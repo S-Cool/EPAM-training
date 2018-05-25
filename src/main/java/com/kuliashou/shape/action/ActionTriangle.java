@@ -1,0 +1,9 @@
+package com.kuliashou.shape.action;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+public class ActionTriangle {
+
+    private static final Logger logger = LogManager.getLogger();
+}
