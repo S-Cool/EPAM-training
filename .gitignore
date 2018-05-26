@@ -3,6 +3,7 @@ shape.iml
 .idea/
 target/
 applog.txt
+logs/
 
 # class files
 out/
