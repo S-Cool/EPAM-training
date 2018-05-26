@@ -1,5 +1,9 @@
 package com.kuliashou.shape.reader;
 
+import com.kuliashou.shape.exception.TriangleException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -10,6 +14,8 @@ import java.util.stream.Collectors;
 
 public class DataReader {
 
+    private static Logger logger = LogManager.getLogger();
+
     public static List<String> readPoints(String filePath) {
 
         List<String> list = new ArrayList<>();
@@ -19,11 +25,16 @@ public class DataReader {
             list = br.lines().collect(Collectors.toList());
 
         } catch (IOException e) {
-            e.printStackTrace();
+            try {
+                throw new TriangleException("Can't open file", e);
+            } catch (TriangleException e1) {
+                e1.printStackTrace();
+            }
         }
-
-        list.forEach(System.out::println);
+        logger.info("File has read");
         return list;
+
+
     }
 
 }
