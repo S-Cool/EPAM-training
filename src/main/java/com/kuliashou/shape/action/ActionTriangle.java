@@ -36,7 +36,7 @@ public class ActionTriangle {
         double right = (triangle.getPointA().getY() - triangle.getPointC().getY()) /
                 (triangle.getPointB().getY() - triangle.getPointC().getY());
 
-        return left == right;
+        return left == right ? false : true;
     }
 
     public static boolean checkIsRectengular(Triangle triangle) {
