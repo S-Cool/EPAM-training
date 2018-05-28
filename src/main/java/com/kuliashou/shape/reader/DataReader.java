@@ -8,7 +8,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -16,24 +15,21 @@ public class DataReader {
 
     private static Logger logger = LogManager.getLogger();
 
-    public static List<String> readPoints(String filePath) {
+    public static List<String> readPoints(String filePath) throws TriangleException {
 
-        List<String> list = new ArrayList<>();
+        List<String> list;
 
         try (BufferedReader br = Files.newBufferedReader(Paths.get(filePath))) {
 
             list = br.lines().collect(Collectors.toList());
 
         } catch (IOException e) {
-            try {
-                throw new TriangleException("Can't open file", e);
-            } catch (TriangleException e1) {
-                e1.printStackTrace();
-            }
+            logger.fatal("Can't open file " + filePath);
+            throw new TriangleException("Can't open file", e);
         }
+
         logger.info("File has read");
         return list;
-
 
     }
 

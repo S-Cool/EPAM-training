@@ -1,5 +1,6 @@
 package com.kuliashou.shape.reader;
 
+import com.kuliashou.shape.exception.TriangleException;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -9,7 +10,7 @@ import java.util.List;
 @Test
 public class DataReaderTest {
 
-    public void dataReaderTest() {
+    public void dataReaderTest() throws TriangleException {
 
         //Given
         List<String> expected = new ArrayList<>();

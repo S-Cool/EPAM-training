@@ -1,22 +1,29 @@
 package com.kuliashou.shape.validator;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.util.regex.Pattern;
 
 public class Validate {
 
-    private static final Pattern COORDINATE_REGEXP = Pattern.compile("\\d+\\.\\d+");
+    private static Logger logger = LogManager.getLogger();
 
-    public static boolean validatePoint(String line, String delimiter) {
+    private static final Pattern COORDINATE_REGEXP = Pattern.compile("-?\\d+\\.\\d+");
+
+    public static boolean validateLine(String line, String delimiter) {
         line = line.trim();
         String[] numbers = line.split(delimiter);
-        if (numbers.length != 2) {
+
+        if (numbers.length != 6) {
             return false;
         }
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < 6; i++) {
             if (!validateCoordinate(numbers[i])) {
                 return false;
             }
         }
+        logger.info("Line has validated");
         return true;
     }
 
