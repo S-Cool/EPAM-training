@@ -4,8 +4,7 @@ import com.kuliashou.shape.exception.TriangleException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.io.BufferedReader;
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
@@ -15,7 +14,11 @@ public class DataReader {
 
     private static Logger logger = LogManager.getLogger();
 
-    public static List<String> readPoints(String filePath) throws TriangleException {
+    public static List<String> readData(String filePath) throws TriangleException {
+
+        if (filePath == null || filePath.isEmpty() || !new File(filePath).exists()) {
+            throw new TriangleException("Wrong path, file is empty or file doesn't exist");
+        }
 
         List<String> list;
 

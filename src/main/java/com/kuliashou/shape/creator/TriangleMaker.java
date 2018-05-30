@@ -2,16 +2,11 @@ package com.kuliashou.shape.creator;
 
 import com.kuliashou.shape.entity.Point;
 import com.kuliashou.shape.entity.Triangle;
-import com.kuliashou.shape.exception.TriangleException;
 
-public class Creator {
+public class TriangleMaker implements FigureMaker {
 
-    public static Triangle triangleCreator(Double[] point) throws TriangleException {
-
-        if (point == null) {
-            throw new TriangleException("Can't create Triangle wrong points");
-        }
-
+    @Override
+    public Figure createFigure(Double[] point) {
         return new Triangle(new Point(point[0], point[1]),
                 new Point(point[2], point[3]),
                 new Point(point[4], point[5]));

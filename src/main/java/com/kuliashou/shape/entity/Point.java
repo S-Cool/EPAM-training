@@ -1,8 +1,10 @@
 package com.kuliashou.shape.entity;
 
+import com.kuliashou.shape.creator.Figure;
+
 import java.util.Objects;
 
-public class Point {
+public class Point implements Figure {
     private double x;
     private double y;
 
@@ -48,5 +50,10 @@ public class Point {
                 "x=" + x +
                 ", y=" + y +
                 '}';
+    }
+
+    @Override
+    public void showFigure() {
+        toString();
     }
 }

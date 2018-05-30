@@ -1,16 +1,25 @@
 package com.kuliashou.shape.entity;
 
+import com.kuliashou.shape.creator.Figure;
+
 import java.util.Objects;
 
-public class Triangle {
+public class Triangle implements Figure {
+    private static int counter = 0;
+    private final int TRIANGLE_ID;
     private Point pointA;
     private Point pointB;
     private Point pointC;
 
     public Triangle(Point pointA, Point pointB, Point pointC) {
+        this.TRIANGLE_ID = counter++;
         this.pointA = pointA;
         this.pointB = pointB;
         this.pointC = pointC;
+    }
+
+    public int getTriangleId() {
+        return TRIANGLE_ID;
     }
 
     public Point getPointA() {
@@ -42,7 +51,8 @@ public class Triangle {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Triangle triangle = (Triangle) o;
-        return Objects.equals(pointA, triangle.pointA) &&
+        return TRIANGLE_ID == triangle.TRIANGLE_ID &&
+                Objects.equals(pointA, triangle.pointA) &&
                 Objects.equals(pointB, triangle.pointB) &&
                 Objects.equals(pointC, triangle.pointC);
     }
@@ -50,15 +60,21 @@ public class Triangle {
     @Override
     public int hashCode() {
 
-        return Objects.hash(pointA, pointB, pointC);
+        return Objects.hash(TRIANGLE_ID, pointA, pointB, pointC);
     }
 
     @Override
     public String toString() {
         return "Triangle{" +
-                "pointA=" + pointA +
+                "TRIANGLE_ID=" + TRIANGLE_ID +
+                ", pointA=" + pointA +
                 ", pointB=" + pointB +
                 ", pointC=" + pointC +
                 '}';
+    }
+
+    @Override
+    public void showFigure() {
+        toString();
     }
 }
