@@ -30,11 +30,9 @@ public class ActionTriangle {
     }
 
     public static boolean checkIsTriangle(Triangle triangle) {
-        double left = (triangle.getPointA().getX() - triangle.getPointC().getX()) /
-                (triangle.getPointB().getX() - triangle.getPointC().getX());
+        double left = (triangle.getPointA().getX() - triangle.getPointC().getX()) / (triangle.getPointB().getX() - triangle.getPointC().getX());
 
-        double right = (triangle.getPointA().getY() - triangle.getPointC().getY()) /
-                (triangle.getPointB().getY() - triangle.getPointC().getY());
+        double right = (triangle.getPointA().getY() - triangle.getPointC().getY()) / (triangle.getPointB().getY() - triangle.getPointC().getY());
 
         return !(left == right) ? true : false;
     }

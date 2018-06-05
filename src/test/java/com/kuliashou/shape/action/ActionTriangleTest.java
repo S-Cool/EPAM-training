@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 public class ActionTriangleTest {
 
     @Test
-    public void testCheckIsTriangle() {
+    public void checkIsTriangleTest() {
 
         //Given
         Triangle triangle = new Triangle(new Point(1.0, 1.0),
