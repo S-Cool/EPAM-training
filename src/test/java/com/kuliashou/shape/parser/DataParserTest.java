@@ -3,6 +3,7 @@ package com.kuliashou.shape.parser;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.util.ArrayList;
 
 public class DataParserTest {
 
@@ -10,15 +11,24 @@ public class DataParserTest {
     public void dataParserTest() {
 
         //Given
-        String line = "3.0, 2.0, 4.0, 3.0, 2.0, 4.0";
         String delimiter = ",";
-        Double[] excepted = {3.0, 2.0, 4.0, 3.0, 2.0, 4.0};
+
+        ArrayList<String> data = new ArrayList<>();
+        data.add("1.0, 2.0, 3.0, 1.0, 2.0, 3.0");
+        data.add("3.1, 4.5, 2.5, 5.0, 3.0, 2.0");
+
+        Double[] first = {1.0, 2.0, 3.0, 1.0, 2.0, 3.0};
+        Double[] second = {3.1, 4.5, 2.5, 5.0, 3.0, 2.0};
+        ArrayList<Double[]> expected = new ArrayList<>();
+        expected.add(first);
+        expected.add(second);
+
 
         //When
-        Double[] actual = DataParser.pointParser(line, delimiter);
+        ArrayList<Double[]> actual = DataParser.dataParser(data, delimiter);
 
         //Then
-        Assert.assertEquals(actual, excepted);
+        Assert.assertEquals(actual, expected);
 
     }
 }

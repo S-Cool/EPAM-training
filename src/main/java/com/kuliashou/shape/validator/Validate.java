@@ -11,6 +11,7 @@ public class Validate {
 
     private static Logger logger = LogManager.getLogger();
     private static final Pattern COORDINATE_REGEXP = Pattern.compile("^-?\\d+\\.\\d+");
+    private static final int AMOUNT_OF_COORDINATES = 6;
 
     public static ArrayList<String> validateData(List<String> list, String delimiter) {
 
@@ -30,10 +31,10 @@ public class Validate {
         line = line.trim().replaceAll("\\s", "");
         String[] numbers = line.split(delimiter);
 
-        if (numbers.length != 6) {
+        if (numbers.length != AMOUNT_OF_COORDINATES) {
             return false;
         }
-        for (int i = 0; i < 6; i++) {
+        for (int i = 0; i < AMOUNT_OF_COORDINATES; i++) {
             if (!COORDINATE_REGEXP.matcher(numbers[i]).matches()) {
                 return false;
             }
