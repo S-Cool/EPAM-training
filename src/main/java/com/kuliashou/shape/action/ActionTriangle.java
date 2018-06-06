@@ -30,14 +30,16 @@ public class ActionTriangle {
     }
 
     public static boolean checkIsTriangle(Triangle triangle) {
-        double left = (triangle.getPointA().getX() - triangle.getPointC().getX()) / (triangle.getPointB().getX() - triangle.getPointC().getX());
+        double left = (triangle.getPointA().getX() - triangle.getPointC().getX())
+                / (triangle.getPointB().getX() - triangle.getPointC().getX());
 
-        double right = (triangle.getPointA().getY() - triangle.getPointC().getY()) / (triangle.getPointB().getY() - triangle.getPointC().getY());
+        double right = (triangle.getPointA().getY() - triangle.getPointC().getY())
+                / (triangle.getPointB().getY() - triangle.getPointC().getY());
 
         return !(left == right) ? true : false;
     }
 
-    public static boolean checkIsRectengular(Triangle triangle) {
+    public static boolean checkIsRectangular(Triangle triangle) {
         double a = ActionTriangle.calculateSideA(triangle);
         double b = ActionTriangle.calculateSideB(triangle);
         double c = ActionTriangle.calculateSideC(triangle);
