@@ -10,7 +10,7 @@ import java.util.List;
 @Test
 public class DataReaderTest {
 
-    public void dataReaderTest() throws TriangleException {
+    public void testDataReader() throws TriangleException {
 
         //Given
         List<String> expected = new ArrayList<>();
@@ -28,6 +28,4 @@ public class DataReaderTest {
         //Then
         Assert.assertEquals(actual, expected);
     }
-
-
 }

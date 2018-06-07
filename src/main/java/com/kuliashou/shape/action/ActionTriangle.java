@@ -17,7 +17,11 @@ public class ActionTriangle {
         double b = ActionTriangle.calculateSideB(triangle);
         double c = ActionTriangle.calculateSideC(triangle);
         double p = ActionTriangle.calculatePerimeter(triangle) / 2;
-        return sqrt(p * (p - a) * (p - b) * (p - c));
+        double area = sqrt(p * (p - a) * (p - b) * (p - c));
+
+        logger.info("Area has calculated!");
+
+        return area;
     }
 
     public static double calculatePerimeter(Triangle triangle) {
@@ -25,8 +29,11 @@ public class ActionTriangle {
         double a = ActionTriangle.calculateSideA(triangle);
         double b = ActionTriangle.calculateSideB(triangle);
         double c = ActionTriangle.calculateSideC(triangle);
+        double perimeter = a + b + c;
 
-        return a + b + c;
+        logger.info("Perimeter has calculated!");
+
+        return perimeter;
     }
 
     public static boolean checkIsTriangle(Triangle triangle) {

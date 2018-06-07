@@ -9,7 +9,7 @@ import java.util.List;
 public class ValidateTest {
 
     @Test
-    public void validateLineTestTrueData() {
+    public void testValidateLineTrueData() {
 
         //Given
         String line = "-1.0, 2.0, 3.0, 1.0, 2.0, 3.0";
@@ -20,11 +20,10 @@ public class ValidateTest {
 
         //Then
         Assert.assertTrue(actual);
-
     }
 
     @Test
-    public void validateLineTestFalseData() {
+    public void testValidateLineFalseData() {
 
         //Given
         String line = "-1.t, 2.0, 3.0, 1.0, 2.0, 3.0";
@@ -35,11 +34,10 @@ public class ValidateTest {
 
         //Then
         Assert.assertFalse(actual);
-
     }
 
     @Test
-    public void validateDataTest() {
+    public void testValidateData() {
 
         //Given
         List<String> list = new ArrayList<>();

@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 public class ActionTriangleTest {
 
     @Test
-    public void calculateAreaTest() {
+    public void testCalculateArea() {
 
         //Given
         Triangle triangle = new Triangle(new Point(1.0, 1.0),
@@ -25,7 +25,7 @@ public class ActionTriangleTest {
     }
 
     @Test
-    public void calculatePerimeterTest() {
+    public void testCalculatePerimeter() {
 
         //Given
         Triangle triangle = new Triangle(new Point(1.0, 1.0),
@@ -42,7 +42,7 @@ public class ActionTriangleTest {
     }
 
     @Test
-    public void checkIsTriangleTest() {
+    public void testCheckIsTriangle() {
 
         //Given
         Triangle triangle = new Triangle(new Point(1.0, 1.0),

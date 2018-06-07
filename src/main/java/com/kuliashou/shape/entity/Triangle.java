@@ -51,8 +51,7 @@ public class Triangle implements Figure {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Triangle triangle = (Triangle) o;
-        return TRIANGLE_ID == triangle.TRIANGLE_ID &&
-                Objects.equals(pointA, triangle.pointA) &&
+        return Objects.equals(pointA, triangle.pointA) &&
                 Objects.equals(pointB, triangle.pointB) &&
                 Objects.equals(pointC, triangle.pointC);
     }
@@ -60,7 +59,7 @@ public class Triangle implements Figure {
     @Override
     public int hashCode() {
 
-        return Objects.hash(TRIANGLE_ID, pointA, pointB, pointC);
+        return Objects.hash(pointA, pointB, pointC);
     }
 
     @Override

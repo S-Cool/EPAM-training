@@ -22,7 +22,7 @@ public class Validate {
                 validateList.add(line);
             }
         }
-        logger.info("File with data has validated.");
+        logger.info("File with data has validated!");
         return validateList;
     }
 
