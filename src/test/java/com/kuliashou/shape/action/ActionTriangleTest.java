@@ -45,8 +45,8 @@ public class ActionTriangleTest {
     public void testCheckIsTriangle() {
 
         //Given
-        Triangle triangle = new Triangle(new Point(1.0, 1.0),
-                new Point(3.0, 3.0),
+        Triangle triangle = new Triangle(new Point(2.0, 1.0),
+                new Point(3.0, 2.0),
                 new Point(4.0, 0.0));
 
         //When
@@ -61,8 +61,8 @@ public class ActionTriangleTest {
 
         //Given
         Triangle triangle = new Triangle(new Point(1.0, 1.0),
-                new Point(1.0, 3.0),
-                new Point(3.0, 1.0));
+                new Point(1.0, 5.0),
+                new Point(5.0, 1.0));
 
         //When
         boolean expected = ActionTriangle.checkIsRectangular(triangle);
