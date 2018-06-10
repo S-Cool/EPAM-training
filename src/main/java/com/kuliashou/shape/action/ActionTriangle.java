@@ -43,33 +43,41 @@ public class ActionTriangle {
         double right = (triangle.getPointA().getY() - triangle.getPointC().getY())
                 / (triangle.getPointB().getY() - triangle.getPointC().getY());
 
-        return !(left == right) ? true : false;
+        boolean conclusion = !(left == right) ? true : false;
+
+        logger.info("The Figure is verified that it's triangle!");
+
+        return conclusion;
     }
 
     public static boolean checkIsRectangular(Triangle triangle) {
         double a = ActionTriangle.calculateSideA(triangle);
         double b = ActionTriangle.calculateSideB(triangle);
         double c = ActionTriangle.calculateSideC(triangle);
-        return sqrt(abs(a)) + sqrt(abs(c)) == sqrt(abs(b)) |
+        boolean conclusion = sqrt(abs(a)) + sqrt(abs(c)) == sqrt(abs(b)) |
                 sqrt(abs(c)) + sqrt(abs(b)) == sqrt(abs(a)) |
                 sqrt(abs(a)) + sqrt(abs(b)) == sqrt(abs(c));
+
+        logger.info("The Figure is verified that it's rectangular!");
+
+        return conclusion;
     }
 
-    public static double calculateSideA(Triangle triangle) {
+    private static double calculateSideA(Triangle triangle) {
         double dx = (triangle.getPointA().getX() - triangle.getPointB().getX());
         double dy = (triangle.getPointA().getY() - triangle.getPointB().getY());
         double a = Math.hypot(dx, dy);
         return a;
     }
 
-    public static double calculateSideB(Triangle triangle) {
+    private static double calculateSideB(Triangle triangle) {
         double dx = (triangle.getPointB().getX() - triangle.getPointC().getX());
         double dy = (triangle.getPointB().getY() - triangle.getPointC().getY());
         double b = Math.hypot(dx, dy);
         return b;
     }
 
-    public static double calculateSideC(Triangle triangle) {
+    private static double calculateSideC(Triangle triangle) {
         double dx = (triangle.getPointC().getX() - triangle.getPointA().getX());
         double dy = (triangle.getPointC().getY() - triangle.getPointA().getY());
         double c = Math.hypot(dx, dy);

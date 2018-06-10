@@ -17,7 +17,7 @@ public class DataReader {
     public static List<String> readData(String filePath) throws TriangleException {
 
         if (filePath == null || filePath.isEmpty() || !new File(filePath).exists()) {
-            throw new TriangleException("Wrong path, file is empty or file doesn't exist");
+            throw new TriangleException("Wrong path or file doesn't exist!");
         }
 
         List<String> list;
@@ -31,7 +31,7 @@ public class DataReader {
             throw new TriangleException("Can't open file", e);
         }
 
-        logger.info("File has read");
+        logger.info("File has findById!");
         return list;
 
     }

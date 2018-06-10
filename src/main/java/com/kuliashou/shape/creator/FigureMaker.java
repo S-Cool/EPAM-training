@@ -1,7 +1,8 @@
 package com.kuliashou.shape.creator;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public interface FigureMaker {
-    ArrayList<Figure> createFigure(ArrayList<Double[]> point);
+    HashMap<Integer, Figure> createFigures(ArrayList<Double[]> point);
 }

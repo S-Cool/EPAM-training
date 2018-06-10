@@ -26,7 +26,7 @@ public class DataParser {
             }
             parsedData.add(numbers);
         }
-        logger.info("Data has validated!");
+        logger.info("Data has parsed!");
         return parsedData;
     }
 

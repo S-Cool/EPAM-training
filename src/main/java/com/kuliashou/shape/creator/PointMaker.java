@@ -1,21 +1,26 @@
 package com.kuliashou.shape.creator;
 
 import com.kuliashou.shape.entity.Point;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class PointMaker implements FigureMaker {
 
-    @Override
-    public ArrayList<Figure> createFigure(ArrayList<Double[]> coordinates) {
+    private static Logger logger = LogManager.getLogger();
 
-        ArrayList<Figure> figures = new ArrayList<>();
+    @Override
+    public HashMap<Integer, Figure> createFigures(ArrayList<Double[]> coordinates) {
+
+        HashMap<Integer, Figure> figures = new HashMap<>();
 
         for (Double[] coordinate : coordinates) {
             Point point = new Point(coordinate[0], coordinate[1]);
-            figures.add(point);
+            figures.put(point.getPOINT_ID(), point);
         }
-
+        logger.info("Points has created!");
         return figures;
     }
 }
