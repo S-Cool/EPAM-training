@@ -10,19 +10,19 @@ import com.kuliashou.shape.parser.DataParser;
 import com.kuliashou.shape.reader.DataReader;
 import com.kuliashou.shape.registrar.Registrar;
 import com.kuliashou.shape.registrar.RegistrarMaker;
+import com.kuliashou.shape.repository.exception.RepositoryException;
 import com.kuliashou.shape.validator.Validate;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class RepositoryRegistrar implements ObservedRepository {
 
     private static Logger logger = LogManager.getLogger();
 
-    private HashMap<Integer, Registrar> repositoryData;
+    private Map<Integer, Registrar> repositoryData;
     List<ObserverRepository> observers = new ArrayList<>();
 
     private static RepositoryRegistrar instance;
@@ -55,28 +55,49 @@ public class RepositoryRegistrar implements ObservedRepository {
         repositoryData = registrars;
     }
 
-    public Registrar findById(int id) {
+    public Registrar findById(int id) throws RepositoryException {
         if (repositoryData.containsKey(id)) {
             return repositoryData.get(id);
         } else {
-            logger.error("Data with ID " + id + " doesn't exist!");
-            return null;
+            throw new RepositoryException("Can't find data with Id " + id + ".");
         }
     }
 
-    public boolean update(Registrar registrar) {
+    public Registrar update(Registrar registrar) throws RepositoryException {
 
-        if (repositoryData.containsValue(registrar)) {
-            repositoryData.replace(registrar.getTriangle().getTriangleId(), registrar);
-            logger.error("The Data " + registrar + "has updated!");
-            notifyObservers();
-            return true;
-
-        } else {
-            logger.error("The Data for update doesn't exist!");
-            return false;
+        if (!repositoryData.containsValue(registrar)) {
+            throw new RepositoryException("There is no value to update for value " + registrar + ".");
 
         }
+        if (registrar == null) {
+            throw new RepositoryException("Value can't be null.");
+        }
+
+        return repositoryData.put(registrar.getREGISTRAR_ID(), registrar);
+    }
+
+    public void create(Registrar registrar) throws RepositoryException {
+        if (repositoryData.containsKey(registrar.getREGISTRAR_ID())) {
+            throw new RepositoryException("A value for " + registrar.getREGISTRAR_ID() + " is already present.");
+        }
+        if (registrar == null) {
+            throw new RepositoryException("Value cannot be null.");
+        }
+
+        repositoryData.put(registrar.getREGISTRAR_ID(), registrar);
+    }
+
+    public boolean delete(Registrar registrar) {
+        return repositoryData.remove(registrar.getREGISTRAR_ID()) != null;
+    }
+
+    public LinkedHashMap<Integer, Registrar> sortById(HashMap<Integer, Registrar> unsortedData) {
+        LinkedHashMap<Integer, Registrar> sortedData =
+                unsortedData.entrySet().stream().sorted(Map.Entry.comparingByKey())
+                        .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue,
+                                (oldValue, newValue) -> oldValue, LinkedHashMap::new));
+
+        return sortedData;
     }
 
     @Override
