@@ -4,5 +4,5 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public interface FigureMaker {
-    HashMap<Integer, Figure> createFigures(ArrayList<Double[]> point);
+    HashMap<Long, Figure> createFigures(ArrayList<Double[]> point);
 }

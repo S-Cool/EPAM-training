@@ -13,9 +13,9 @@ public class TriangleMaker implements FigureMaker {
     private static Logger logger = LogManager.getLogger();
 
     @Override
-    public HashMap<Integer, Figure> createFigures(ArrayList<Double[]> coordinates) {
+    public HashMap<Long, Figure> createFigures(ArrayList<Double[]> coordinates) {
 
-        HashMap<Integer, Figure> figures = new HashMap<>();
+        HashMap<Long, Figure> figures = new HashMap<>();
 
         for (Double[] coordinate : coordinates) {
             Triangle triangle = new Triangle(new Point(coordinate[0], coordinate[1]),

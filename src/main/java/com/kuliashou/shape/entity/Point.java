@@ -1,23 +1,23 @@
 package com.kuliashou.shape.entity;
 
 import com.kuliashou.shape.creator.Figure;
+import com.kuliashou.shape.generetor.IdGenerator;
 
 import java.util.Objects;
 
 public class Point implements Figure {
-    private static int counter = 0;
-    private final int POINT_ID;
 
+    private final long POINT_ID;
     private double x;
     private double y;
 
     public Point(double x, double y) {
-        this.POINT_ID = counter++;
+        this.POINT_ID = IdGenerator.generateId();
         this.x = x;
         this.y = y;
     }
 
-    public int getPOINT_ID() {
+    public long getPointId() {
         return POINT_ID;
     }
 

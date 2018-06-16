@@ -1,4 +1,4 @@
-package com.kuliashou.shape.repository.exception;
+package com.kuliashou.shape.exception;
 
 public class RepositoryException extends Exception {
     public RepositoryException() {
@@ -20,4 +20,6 @@ public class RepositoryException extends Exception {
     public RepositoryException(String message, Throwable cause) {
         super(message, cause);
     }
+
+
 }
