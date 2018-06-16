@@ -9,34 +9,6 @@ import java.util.List;
 public class ValidateTest {
 
     @Test
-    public void testValidateLineTrueData() {
-
-        //Given
-        String line = "-1.0, 2.0, 3.0, 1.0, 2.0, 3.0";
-        String delimiter = ",";
-
-        //When
-        Boolean actual = Validate.validateLine(line, delimiter);
-
-        //Then
-        Assert.assertTrue(actual);
-    }
-
-    @Test
-    public void testValidateLineFalseData() {
-
-        //Given
-        String line = "-1.t, 2.0, 3.0, 1.0, 2.0, 3.0";
-        String delimiter = ",";
-
-        //When
-        Boolean actual = Validate.validateLine(line, delimiter);
-
-        //Then
-        Assert.assertFalse(actual);
-    }
-
-    @Test
     public void testValidateData() {
 
         //Given
@@ -58,7 +30,7 @@ public class ValidateTest {
         expected.add("-3.5, 2.5, -1.5, -3.0, 2.0, -1.0");
 
         //When
-        ArrayList actual = Validate.validateData(list, delimiter);
+        List<String> actual = Validate.validateData(list, delimiter);
 
         //Then
         Assert.assertEquals(actual, expected);

@@ -27,7 +27,7 @@ public class TriangleMakerTest {
 
         //When
         FigureMaker figure = new TriangleMaker();
-        HashMap<Integer, Figure> actual = figure.createFigures(data);
+        HashMap<Long, Figure> actual = figure.createFigures(data);
 
         //Then
         Assert.assertEquals(actual, expected);
