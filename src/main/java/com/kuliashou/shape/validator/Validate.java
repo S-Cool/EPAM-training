@@ -1,5 +1,7 @@
 package com.kuliashou.shape.validator;
 
+import com.kuliashou.shape.constant.PointConstant;
+import com.kuliashou.shape.constant.TriangleConstant;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -10,10 +12,8 @@ import java.util.regex.Pattern;
 public class Validate {
 
     private static Logger logger = LogManager.getLogger();
-    private static final Pattern COORDINATE_REGEXP = Pattern.compile("^-?\\d+\\.\\d+");
-    private static final int AMOUNT_OF_COORDINATES = 6;
 
-    public static ArrayList<String> validateData(List<String> list, String delimiter) {
+    public static List<String> validateData(List<String> list, String delimiter) {
 
         ArrayList<String> validateList = new ArrayList<>();
 
@@ -26,16 +26,14 @@ public class Validate {
         return validateList;
     }
 
-    public static boolean validateLine(String line, String delimiter) {
+    private static boolean validateLine(String line, String delimiter) {
 
         line = line.trim().replaceAll("\\s", "");
         String[] numbers = line.split(delimiter);
+        Pattern coordinateRegExp = Pattern.compile(PointConstant.COORDINATE_REGEXP);
 
-        if (numbers.length != AMOUNT_OF_COORDINATES) {
-            return false;
-        }
-        for (int i = 0; i < AMOUNT_OF_COORDINATES; i++) {
-            if (!COORDINATE_REGEXP.matcher(numbers[i]).matches()) {
+        for (int index = 0; index < TriangleConstant.COORDINATES_COUNT; index++) {
+            if (numbers.length != TriangleConstant.COORDINATES_COUNT || !coordinateRegExp.matcher(numbers[index]).matches()) {
                 return false;
             }
         }

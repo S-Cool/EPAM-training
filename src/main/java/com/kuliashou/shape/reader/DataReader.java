@@ -31,7 +31,7 @@ public class DataReader {
             throw new TriangleException("Can't open file", e);
         }
 
-        logger.info("File has findById!");
+        logger.info("File has read!");
         return list;
 
     }
