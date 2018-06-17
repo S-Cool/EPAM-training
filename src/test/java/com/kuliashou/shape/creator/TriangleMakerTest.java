@@ -6,7 +6,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.List;
 
 public class TriangleMakerTest {
 
@@ -22,12 +22,12 @@ public class TriangleMakerTest {
                 new Point(1.0, 2.0),
                 new Point(3.0, 1.0),
                 new Point(2.0, 3.0));
-        HashMap<Integer, Figure> expected = new HashMap<>();
-        expected.put(new Integer(0), triangleFirst);
+        List<Figure> expected = new ArrayList<>();
+        expected.add(triangleFirst);
 
         //When
         FigureMaker figure = new TriangleMaker();
-        HashMap<Long, Figure> actual = figure.createFigures(data);
+        List<Figure> actual = figure.createFigures(data);
 
         //Then
         Assert.assertEquals(actual, expected);

@@ -23,7 +23,7 @@ public class DataReaderTest {
         expected.add("-3.5, 2.5, -1.5, -3.0, 2.0, -1.0");
 
         //When
-        List<String> actual = DataReader.readData("C:\\Users\\Ivan\\IdeaProjects\\shape\\data\\data.txt");
+        List<String> actual = DataReader.readData("data/data.txt");
 
         //Then
         Assert.assertEquals(actual, expected);
