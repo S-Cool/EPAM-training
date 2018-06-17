@@ -31,9 +31,19 @@ public class TriangleRepository implements Repository<Triangle> {
     }
 
     @Override
-    public void update(Triangle triangle) {
-        int indexOf = triangles.indexOf(triangle);
-        triangles.set(indexOf, triangle);
+    public void addByIndex(int index, Triangle triangle) {
+        triangles.add(index, triangle);
+    }
+
+    @Override
+    public Triangle readByIndex(int index) {
+        return triangles.get(index);
+    }
+
+    @Override
+    public void update(Triangle oldTriangle, Triangle newTriangle) {
+        int indexOf = triangles.indexOf(oldTriangle);
+        triangles.set(indexOf, newTriangle);
     }
 
     @Override

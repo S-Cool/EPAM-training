@@ -2,7 +2,7 @@ package com.kuliashou.shape.entity;
 
 import com.kuliashou.shape.creator.Figure;
 import com.kuliashou.shape.event.TriangleEvent;
-import com.kuliashou.shape.generetor.IdGenerator;
+import com.kuliashou.shape.generator.IdGenerator;
 import com.kuliashou.shape.observer.TriangleObserved;
 import com.kuliashou.shape.observer.TriangleObserver;
 

@@ -1,4 +1,4 @@
-package com.kuliashou.shape.generetor;
+package com.kuliashou.shape.generator;
 
 public class IdGenerator {
     private static long id;

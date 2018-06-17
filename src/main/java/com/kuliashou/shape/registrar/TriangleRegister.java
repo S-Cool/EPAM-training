@@ -98,7 +98,7 @@ public class TriangleRegister {
         }
     }
 
-    private void putTriangle(Triangle triangle) {
+    public void putTriangle(Triangle triangle) {
         triangleParameters.put(triangle.getTriangleId(), calculateParameters(triangle));
     }
 }
