@@ -1,7 +1,6 @@
 package com.kuliashou.shape.repository;
 
 import com.kuliashou.shape.entity.Triangle;
-import com.kuliashou.shape.exception.SingletonException;
 import com.kuliashou.shape.specification.Specification;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -17,24 +16,29 @@ public class TriangleRepository implements Repository<Triangle> {
 
     public static TriangleRepository getInstance() {
         if (instance == null) {
-            try {
-                instance = new TriangleRepository();
-            } catch (SingletonException e) {
-                logger.catching(e);
-            }
+            instance = new TriangleRepository();
         }
+        logger.info("Triangle repository has created.");
         return instance;
     }
 
-    private TriangleRepository() throws SingletonException {
-        if (instance != null) {
-            throw new SingletonException("Tried to create singleton with reflection API");
-        }
+    private TriangleRepository() {
     }
 
     @Override
     public void add(Triangle triangle) {
         triangles.add(triangle);
+    }
+
+    @Override
+    public void update(Triangle triangle) {
+        int indexOf = triangles.indexOf(triangle);
+        triangles.set(indexOf, triangle);
+    }
+
+    @Override
+    public void delete(Triangle triangle) {
+        triangles.remove(triangle);
     }
 
     @Override

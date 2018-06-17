@@ -43,7 +43,7 @@ public class ActionTriangle {
         double right = (triangle.getPointA().getY() - triangle.getPointC().getY())
                 / (triangle.getPointB().getY() - triangle.getPointC().getY());
 
-        boolean conclusion = !(left == right) ? true : false;
+        boolean conclusion = (left != right);
 
         logger.info("The Figure is verified that it's triangle!");
 

@@ -8,6 +8,8 @@ import java.util.List;
 public interface Repository<T> {
 
     void add(T triangle);
+    void update(T triangle);
+    void delete(T triangle);
 
     List<T> query(Specification specification);
 

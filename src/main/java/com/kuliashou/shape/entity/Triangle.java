@@ -36,6 +36,7 @@ public class Triangle implements Figure, TriangleObserved {
 
     public void setPointA(Point pointA) {
         this.pointA = pointA;
+        notifyObservers();
     }
 
     public Point getPointB() {
@@ -44,6 +45,7 @@ public class Triangle implements Figure, TriangleObserved {
 
     public void setPointB(Point pointB) {
         this.pointB = pointB;
+        notifyObservers();
     }
 
     public Point getPointC() {
@@ -52,6 +54,7 @@ public class Triangle implements Figure, TriangleObserved {
 
     public void setPointC(Point pointC) {
         this.pointC = pointC;
+        notifyObservers();
     }
 
     @Override
@@ -98,7 +101,9 @@ public class Triangle implements Figure, TriangleObserved {
     @Override
     public void notifyObservers() {
         for (TriangleObserver o : observers) {
-            o.handleEvent(new TriangleEvent());
+            if (o != null) {
+                o.handleEvent(new TriangleEvent(this));
+            }
         }
     }
 }

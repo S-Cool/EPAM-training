@@ -7,6 +7,7 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class TriangleRegister {
 
@@ -29,9 +30,32 @@ public class TriangleRegister {
         private double area;
         private double perimeter;
 
-        public Parameters(double area, double perimeter) {
+        private Parameters(double area, double perimeter) {
             this.area = area;
             this.perimeter = perimeter;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            Parameters that = (Parameters) o;
+            return Double.compare(that.area, area) == 0 &&
+                    Double.compare(that.perimeter, perimeter) == 0;
+        }
+
+        @Override
+        public int hashCode() {
+
+            return Objects.hash(area, perimeter);
+        }
+
+        @Override
+        public String toString() {
+            return "Parameters{" +
+                    "area=" + area +
+                    ", perimeter=" + perimeter +
+                    '}';
         }
     }
 
@@ -62,7 +86,7 @@ public class TriangleRegister {
     }
 
     public void recalculate(Triangle triangle) {
-        if (!triangleParameters.containsKey(triangle.getTriangleId())) {
+        if (triangleParameters.containsKey(triangle.getTriangleId())) {
             putTriangle(triangle);
 
             Parameters parameters = calculateParameters(triangle);

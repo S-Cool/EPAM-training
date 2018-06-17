@@ -8,7 +8,7 @@ public class RegisterTriangleObserver implements TriangleObserver {
 
     @Override
     public void handleEvent(TriangleEvent event) {
-        Triangle triangle = event.getSource();
+        Triangle triangle = (Triangle) event.getSource();
         TriangleRegister.getInstance().recalculate(triangle);
     }
 }
