@@ -14,20 +14,20 @@ public class Triangle implements Figure, TriangleObserved {
 
     private List<TriangleObserver> observers = new ArrayList<>();
 
-    private final long TRIANGLE_ID;
+    private long triangleId;
     private Point pointA;
     private Point pointB;
     private Point pointC;
 
     public Triangle(Point pointA, Point pointB, Point pointC) {
-        this.TRIANGLE_ID = IdGenerator.generateId();
+        this.triangleId = IdGenerator.generateId();
         this.pointA = pointA;
         this.pointB = pointB;
         this.pointC = pointC;
     }
 
     public long getTriangleId() {
-        return TRIANGLE_ID;
+        return triangleId;
     }
 
     public Point getPointA() {
@@ -76,7 +76,7 @@ public class Triangle implements Figure, TriangleObserved {
     @Override
     public String toString() {
         return "TriangleRegister{" +
-                "TRIANGLE_ID=" + TRIANGLE_ID +
+                "triangleId=" + triangleId +
                 ", pointA=" + pointA +
                 ", pointB=" + pointB +
                 ", pointC=" + pointC +
