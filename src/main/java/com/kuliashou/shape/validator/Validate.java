@@ -2,6 +2,7 @@ package com.kuliashou.shape.validator;
 
 import com.kuliashou.shape.constant.PointConstant;
 import com.kuliashou.shape.constant.TriangleConstant;
+import com.kuliashou.shape.constant.ValidateConstant;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -28,7 +29,7 @@ public class Validate {
 
     private static boolean validateLine(String line, String delimiter) {
 
-        line = line.trim().replaceAll("\\s", "");
+        line = line.trim().replaceAll(ValidateConstant.SPACE_REGEXP, "");
         String[] numbers = line.split(delimiter);
         Pattern coordinateRegExp = Pattern.compile(PointConstant.COORDINATE_REGEXP);
 
